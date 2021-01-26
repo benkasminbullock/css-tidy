@@ -1,0 +1,65 @@
+#!/home/ben/software/install/bin/perl
+use warnings;
+use strict;
+use utf8;
+use FindBin '$Bin';
+
+# To do: add a blank line after ^} if there is none.
+#
+#}
+#.myclass {
+#
+#turns into
+#
+#}
+#
+#.myclass {
+
+my $depth = 0;
+my $blank = 0;
+my $comment = 0;
+while (<STDIN>) {
+    if (m!^\s*/\*!) {
+	if (! m!/\*.*?\*/!) {
+	    $comment = 1;
+	    $blank = 0;
+	    print;
+	    next;
+	}
+    }
+    if ($comment) {
+	if (m!.*?\*/!) {
+	    $comment = 0;
+	    $blank = 0;
+	    print;
+	    next;
+	}
+    }
+    if (/\}/) {
+	$depth--;
+    }
+    my $initial = '';
+    if (/^\s*$/) {
+	$blank++;
+	if ($blank == 1) {
+	    print "\n";
+	}
+	next;
+    }
+    $blank = 0;
+    if (/^(\s*)/) {
+	$initial = $1;
+    }
+    if (length ($initial) != $depth * 4) {
+	s/^$initial/'    ' x $depth/e;
+    }
+    s/:(\S)/: $1/;
+    print;
+    if (/\{/) {
+	$depth++;
+    }
+}
+
+# Local variables:
+# mode: perl
+# End:
