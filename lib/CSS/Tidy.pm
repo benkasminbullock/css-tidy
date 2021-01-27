@@ -60,9 +60,15 @@ sub tidy_css
     }
 
     my $out = join ("\n", @tidy);
+    # Reduce multiple blank lines to a single one.
     $out =~ s/\n+/\n/g;
+    # Add a blank after }
     $out =~ s/^(\s*\})/$1\n/gsm;
+    # Remove a blank line before }. This also tidies up the
+    # aftereffects of the above regex, which puts too many blank
+    # lines.
     $out =~ s/\n\n(\s*\})/\n$1/g;
+    # Add a blank line after comments.
     $out =~ s!(\*/)!$1\n!g;
     return $out;
 }

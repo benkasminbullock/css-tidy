@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 use utf8;
-use CSS::Tidy;
+use CSS::Tidy 'tidy_css';
 
 # To do: add a blank line after ^} if there is none.
 #
@@ -21,7 +21,7 @@ while (<STDIN>) {
     $text .= $_;
 }
 
-$text = tidy_css ($text);
+my $out = tidy_css ($text);
 print "$out\n";
 
 # Local variables:
