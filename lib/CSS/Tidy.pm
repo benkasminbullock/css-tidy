@@ -10,7 +10,6 @@ our %EXPORT_TAGS = (
     all => \@EXPORT_OK,
 );
 our $VERSION = '0.00_02';
-#use C::Tokenize '$trad_comment_re';
 
 sub tidy_css
 {
@@ -96,7 +95,7 @@ sub tidy_css
     return $out;
 }
 
-our $trad_comment_re = qr!
+my $trad_comment_re = qr!
     /\*
     (?:
 	# Match "not an asterisk"
