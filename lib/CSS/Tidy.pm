@@ -16,7 +16,6 @@ sub tidy_css
     my ($text) = @_;
 
     my $depth = 0;
-    my $blank = 0;
     my $comment = 0;
 
     my @lines = split /\n/, $text;
@@ -27,7 +26,6 @@ sub tidy_css
 	if (m!^\s*/\*!) {
 	    if (! m!/\*.*?\*/!) {
 		$comment = 1;
-		$blank = 0;
 		push @tidy, $_;
 		next;
 	    }
@@ -35,7 +33,6 @@ sub tidy_css
 	if ($comment) {
 	    if (m!.*?\*/!) {
 		$comment = 0;
-		$blank = 0;
 		push @tidy, $_;
 		next;
 	    }
