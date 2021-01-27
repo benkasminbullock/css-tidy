@@ -41,16 +41,16 @@ is ($pseudo_after, $pseudo, "Did not insert a colon after pseudoclasses");
 
 # Bug
 
-TODO: {
-    local $TODO = "Don't insert space in cascaded pseudoclass";
-    my $cascaded =<<EOF;
+#TODO: {
+#    local $TODO = "Don't insert space in cascaded pseudoclass";
+my $cascaded =<<EOF;
 .index-off a:hover {
     clear: both;
 }
 EOF
-    my $cascadedout = tidy_css ($cascaded);
-    is ($cascadedout, $cascaded, "Don't put space after colon in cascaded");
-};
+my $cascadedout = tidy_css ($cascaded);
+is ($cascadedout, $cascaded, "Don't put space after colon in cascaded");
+#};
 
 # Test formatting of non-pseudo class colons.
 
