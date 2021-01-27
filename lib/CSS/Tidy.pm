@@ -52,7 +52,7 @@ sub tidy_css
 		push @tidy, "$indent    $b";
 	    }
 	    push @tidy, "$indent}";
-	    push @tidy, "$indent$3";
+	    push @tidy, "$indent$after";
 	    next;
 	}
 	if (/\}/) {
