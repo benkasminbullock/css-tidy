@@ -72,6 +72,21 @@ is altered to put a single space after the colon:
 
 A blank line is inserted between declaration blocks.
 
+=item Single-line braces are expanded out
+
+    .something { something:something; }
+
+is expanded to
+
+    .something {
+        something: something;
+    }
+
+=item Comments have a blank line before and after
+
+If the comment is on a line by itself, it will be given one blank line
+before and after itself.
+
 =back
 
 =head1 SCRIPT

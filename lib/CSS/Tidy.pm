@@ -10,6 +10,7 @@ our %EXPORT_TAGS = (
     all => \@EXPORT_OK,
 );
 our $VERSION = '0.00_02';
+#use C::Tokenize '$trad_comment_re';
 
 sub tidy_css
 {
@@ -18,11 +19,16 @@ sub tidy_css
     my $depth = 0;
     my $comment = 0;
 
+    ($text, my $comments) = strip_comments ($text);
+
     my @lines = split /\n/, $text;
 
     my @tidy;
 
+    my $i;
+
     for (@lines) {
+	$i++;
 	if (m!^\s*/\*!) {
 	    if (! m!/\*.*?\*/!) {
 		$comment = 1;
@@ -37,8 +43,24 @@ sub tidy_css
 		next;
 	    }
 	}
+	# {} on the same line.
+	if (/^\s*(.*)\{(.*?)\}(.*)$/) {
+	    my ($before, $between, $after) = ($1, $2, $3);
+	    my $indent = '    ' x ($depth + 1);
+	    push @tidy, "$indent$before {";
+	    my @between = split /;\s*/, $between;
+	    for my $b (@between) {
+		push @tidy, "$indent    $b";
+	    }
+	    push @tidy, "$indent}";
+	    push @tidy, "$indent$3";
+	    next;
+	}
 	if (/\}/) {
 	    $depth--;
+	    if ($depth < 0) {
+		warn "$i: depth = $depth\n";
+	    }
 	}
 	my $initial = '';
 	if (/^(\s*)/) {
@@ -68,9 +90,45 @@ sub tidy_css
     # aftereffects of the above regex, which puts too many blank
     # lines.
     $out =~ s/\n\n(\s*\})/\n$1/g;
+    $out = restore_comments ($out, $comments);
     # Add a blank line after comments.
     $out =~ s!(\*/)!$1\n!g;
     return $out;
+}
+
+our $trad_comment_re = qr!
+    /\*
+    (?:
+	# Match "not an asterisk"
+	[^*]
+    |
+	# Match multiple asterisks followed
+	# by anything except an asterisk or a
+	# slash.
+	\*+[^*/]
+    )*
+    # Match multiple asterisks followed by a
+    # slash.
+    \*+/
+!x;
+
+sub strip_comments
+{
+    my ($text) = @_;
+    my @comments;
+    my $n = 0;
+    while ($text =~ s!($trad_comment_re)!// css_tidy_#$n //!sm) {
+	$n++;
+	push @comments, $1;
+    }
+    return ($text, \@comments);
+}
+
+sub restore_comments
+{
+    my ($text, $comments) = @_;
+    $text =~ s!// css_tidy_#([0-9]+) //!$comments->[$1]!g;
+    return $text;
 }
 
 1;
