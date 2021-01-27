@@ -47,10 +47,10 @@ sub tidy_css
 	if (length ($initial) != $depth * 4) {
 	    s/^$initial/'    ' x $depth/e;
 	}
-	# If not a CSS pseudoclass
-	if (! /(?:\.|#)\w+.*?:/) {
+	# If not a CSS pseudoclass or pseudoelement
+	if (! /(?:\.|#)\w+.*?:/ && ! /^\s*:+/) {
 	    # Insert a space after a colon
-	    s/:(\S)/: $1/;
+	    s/([^:]):(\S)/$1: $2/;
 	}
 	s/\s+$//;
 	push @tidy, $_;

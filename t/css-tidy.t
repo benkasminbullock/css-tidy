@@ -52,6 +52,13 @@ my $cascadedout = tidy_css ($cascaded);
 is ($cascadedout, $cascaded, "Don't put space after colon in cascaded");
 #};
 
+my $pe =<<EOF;
+::selection {
+    background-color: aliceblue;
+}
+EOF
+is (tidy_css ($pe), $pe, "Don't alter pseudoelements");
+
 # Test formatting of non-pseudo class colons.
 
 my $colonspace =<<EOF;
