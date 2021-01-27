@@ -2,7 +2,7 @@
 use warnings;
 use strict;
 use utf8;
-use FindBin '$Bin';
+use CSS::Tidy;
 
 # To do: add a blank line after ^} if there is none.
 #
@@ -15,50 +15,14 @@ use FindBin '$Bin';
 #
 #.myclass {
 
-my $depth = 0;
-my $blank = 0;
-my $comment = 0;
+my $text = '';
+
 while (<STDIN>) {
-    if (m!^\s*/\*!) {
-	if (! m!/\*.*?\*/!) {
-	    $comment = 1;
-	    $blank = 0;
-	    print;
-	    next;
-	}
-    }
-    if ($comment) {
-	if (m!.*?\*/!) {
-	    $comment = 0;
-	    $blank = 0;
-	    print;
-	    next;
-	}
-    }
-    if (/\}/) {
-	$depth--;
-    }
-    my $initial = '';
-    if (/^\s*$/) {
-	$blank++;
-	if ($blank == 1) {
-	    print "\n";
-	}
-	next;
-    }
-    $blank = 0;
-    if (/^(\s*)/) {
-	$initial = $1;
-    }
-    if (length ($initial) != $depth * 4) {
-	s/^$initial/'    ' x $depth/e;
-    }
-    s/:(\S)/: $1/;
-    print;
-    if (/\{/) {
-	$depth++;
-    }
+    $text .= $_;
 }
+
+$text = tidy_css ($text);
+print "$out\n";
 
 # Local variables:
 # mode: perl

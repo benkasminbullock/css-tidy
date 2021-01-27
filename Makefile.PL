@@ -14,6 +14,9 @@ WriteMakefile (
     LICENSE => 'perl',
     PREREQ_PM => {
     },
+    EXE_FILES => [
+	'script/csstidy',
+    ],
     META_MERGE => {
 	'meta-spec' => {
 	    version => 2,

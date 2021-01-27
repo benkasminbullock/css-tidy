@@ -17,11 +17,12 @@ This method was added in version [% version %] of the module.
 
 =head1 NAME
 
-[% info.colon %] - abstract here.
+[% info.colon %] - reformat CSS
 
 =head1 SYNOPSIS
 
-    use [% info.colon %];
+    use CSS::Tidy 'tidy_css';
+    my $output = tidy_css ($input);
 
 =head1 VERSION
 
@@ -31,6 +32,49 @@ corresponding to L<git commit [% commit.commit %]|[% info.repo
 
 =head1 DESCRIPTION
 
+This reformats CSS.
+
 =head1 FUNCTIONS
+
+=head2 tidy_css
+
+    my $output = tidy_css ($input);
+
+Given CSS in C<$input>, reformat it into a consistent format and
+return the value.
+
+=head1 TRANSFORMATIONS APPLIED
+
+=over
+
+=item Indentation
+
+Indentation is changed to multiples of four spaces.
+
+=item Trailing whitespace
+
+Trailing whitespace (blanks after the end of the line) is removed.
+
+=item Property/value pairs
+
+The spacing between property/value pairs such as
+
+    font-size:21em;
+
+is altered to put a single space after the colon:
+
+    font-size: 21em;
+
+=item Declaration blocks
+
+A blank line is inserted between declaration blocks.
+
+=back
+
+=head1 SCRIPT
+
+The script L<csstidy> runs L</tidy_css> on STDIN and prints the result
+to STDOUT. There is also F<css-tidy.el> in the distribution which
+enables one to run L<csstidy> on the current buffer.
 
 [% INCLUDE "author" %]
