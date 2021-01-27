@@ -59,6 +59,12 @@ my $pe =<<EOF;
 EOF
 is (tidy_css ($pe), $pe, "Don't alter pseudoelements");
 
+TODO: {
+    local $TODO = "Don't insert space after colons in comments";
+    my $comment="/* http://stackoverflow.com/a/16282279 */\n";
+    is (tidy_css ($comment), $comment, "Don't alter colons in comments");
+};
+
 # Test formatting of non-pseudo class colons.
 
 my $colonspace =<<EOF;
