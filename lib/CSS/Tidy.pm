@@ -43,6 +43,13 @@ sub tidy_css
 	    }
 	}
 	# {} on the same line.
+
+	# It would be better to deal with these beforehand.
+
+	# If done before processing it will break the line numbers.
+
+	# Need to also add then remove line number fake information.
+
 	if (/^\s*(.*)\{(.*?)\}(.*)$/) {
 	    my ($before, $between, $after) = ($1, $2, $3);
 	    my $indent = '    ' x ($depth + 1);
