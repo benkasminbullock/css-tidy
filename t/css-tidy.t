@@ -22,7 +22,7 @@ my $trailing =<<EOF;
 EOF
 my $trailing_after = tidy_css ($trailing);
 my $stripped = $trailing;
-$stripped =~ s!\h+$!!gm;
+$stripped =~ s! +$!!gm;
 is ($trailing_after, $stripped, "Stripped trailing whitespace");
 
 # Test whether pseudo classes are unaltered.

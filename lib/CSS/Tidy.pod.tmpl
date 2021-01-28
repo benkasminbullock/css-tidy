@@ -95,4 +95,95 @@ The script L<csstidy> runs L</tidy_css> on STDIN and prints the result
 to STDOUT. There is also F<css-tidy.el> in the distribution which
 enables one to run L<csstidy> on the current buffer.
 
+=head1 SEE ALSO
+
+[% PROCESS 'cpm.pod' %]
+
+=head2 About CSS
+
+=over
+
+=item CSS Specification
+
+L<CSS Syntax Module Level 3|https://www.w3.org/TR/css-syntax-3/> at
+the W3 Consortium.
+
+=back
+
+=head2 Other CPAN modules
+
+=head3 Parsers
+
+=over
+
+[% cpm('CSS') %]
+
+[% cpm('CSS::Croco') %]
+
+[% cpm('CSS::DOM') %]
+
+[% cpm('CSS::Object') %]
+
+[% cpm('CSS::SAC') %]
+
+👎 This seems to be unusable, it fails on the CSS stylesheets we've
+tried it on.
+
+[% cpm('CSS::Simple') %]
+
+[% cpm('CSS::Struct') %]
+
+It doesn't have very much documentation. See
+L<https://github.com/michal-josef-spacek/CSS-Struct/issues/2>.
+
+[% cpm('CSS::Tiny') %]
+
+=back
+
+=head3 Preprocessors
+
+=over
+
+[% cpm('CSS::LESS') %]
+
+[% cpm('CSS::Sass') %]
+
+=back
+
+=head3 Minifiers
+
+=over
+
+[% cpm('CSS::Compressor') %]
+
+[% cpm('CSS::Minifier') %]
+
+[% cpm('CSS::Minifier::XS') %]
+
+[% cpm('CSS::Packer') %]
+
+[% cpm('CSS::Squish') %]
+
+=back
+
+=head3 Other
+
+=over
+
+[% cpm('CSS::Coverage') %]
+
+👎 Test whether your styles are actually in use or not. Unfortunately
+it depends on L</CSS::SAC> which seems to be unusable.
+
+[% cpm('CSS::Inliner') %]
+
+[% cpm('Test::CSS') %]
+
+Test CSS files or strings using regular expressions and a list of
+properties. The properties list is somewhat out of date, for example
+it doesn't have the C<touch-action> property. See
+L<https://github.com/manwar/Test-CSS/issues/2>.
+
+=back
+
 [% INCLUDE "author" %]
