@@ -9,7 +9,7 @@ our @EXPORT_OK = qw/tidy_css/;
 our %EXPORT_TAGS = (
     all => \@EXPORT_OK,
 );
-our $VERSION = '0.00_02';
+our $VERSION = '0.00_03';
 
 sub tidy_css
 {
