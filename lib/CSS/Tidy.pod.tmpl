@@ -39,12 +39,47 @@ consistently format CSS.
 
 =head1 FUNCTIONS
 
+=head2 copy_css
+
+    copy_css (in => $infile, out => $outfile);
+
+Copy CSS from a file specified by L</in> to a file specified by
+L</out>.
+
+=over
+
+=item in
+
+Input file. The file is read in via the function C<read_text> in
+L</File::Slurper> so it must be in the UTF-8 encoding.
+
+=item out
+
+Output file. The file is written using C<write_text> from
+L</File::Slurper> so it must be in the UTF-8 encoding.
+
+=item decomment
+
+Remove comments from the output file.
+
+=back
+
 =head2 tidy_css
 
-    my $output = tidy_css ($input);
+    my $output = tidy_css ($input, %options);
 
 Given CSS in C<$input>, reformat it into a consistent format and
 return the value.
+
+Options are as follows:
+
+=over
+
+=item decomment
+
+Set to a true value to remove comments from the output
+
+=back
 
 =head1 TRANSFORMATIONS APPLIED
 
@@ -94,6 +129,20 @@ before and after itself.
 The script L<csstidy> runs L</tidy_css> on STDIN and prints the result
 to STDOUT. There is also F<css-tidy.el> in the distribution which
 enables one to run L<csstidy> on the current buffer.
+
+=head1 DEPENDENCIES
+
+=over 
+
+=item L<C::Tokenize>
+
+This is used for comment regex.
+
+=item L<File::Slurper>
+
+This is used to read and write files
+
+=back
 
 =head1 SEE ALSO
 
