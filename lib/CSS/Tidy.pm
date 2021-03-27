@@ -62,7 +62,9 @@ sub tidy_css
     my ($text, %options) = @_;
 
     my $decomment = get_option (\%options, 'decomment');
-    my $verbose = get_option (\%options, 'verbose');
+    #my $verbose = 
+    # Discard this at the moment, we have no verbose output yet.
+    get_option (\%options, 'verbose');
     check_options (\%options);
 
     # Store for comments during processing. They are then restored.
