@@ -59,6 +59,16 @@ my $pe =<<EOF;
 EOF
 is (tidy_css ($pe), $pe, "Don't alter pseudoelements");
 
+my $b4 =<<EOF;
+section.function h3::before {
+    content: "⊛";
+    color: var(--dark-blue);
+    opacity: 0.5;
+}
+EOF
+like (tidy_css ($b4), qr!::!, "Don't split colons before ::before");
+
+
 #TODO: {
 #    local $TODO = "Don't insert space after colons in comments";
     my $comment="/* http://stackoverflow.com/a/16282279 */\n";

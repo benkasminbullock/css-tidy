@@ -127,7 +127,7 @@ sub tidy_css
 	# If not a CSS pseudoclass or pseudoelement
 	if (! /(?:\.|#)\w+.*?:/ && ! /^\s*:+/) {
 	    # Insert a space after a colon
-	    s/([^:]):(\S)/$1: $2/;
+	    s/([^:]):([^:\s])/$1: $2/;
 	}
 	s/\s+$//;
 	push @tidy, $_;
