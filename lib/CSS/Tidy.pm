@@ -16,7 +16,7 @@ our %EXPORT_TAGS = (
     all => \@EXPORT_OK,
 );
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use C::Tokenize '$comment_re';
 use File::Slurper qw!read_text write_text!;

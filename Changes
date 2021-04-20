@@ -1,5 +1,9 @@
 Revision history for Perl module CSS::Tidy
 
+0.04 
+
+- Fix problem with ::before, etc.
+
 0.03 2021-03-27
 
 - Deal with strings (necessary because of // comments)
