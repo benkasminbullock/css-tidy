@@ -184,6 +184,8 @@ tried it on.
 
 [% cpm('CSS::Tiny') %]
 
+Claims to reduce memory usage compared to the L<CSS> module.
+
 =back
 
 =head3 Preprocessors
@@ -197,10 +199,14 @@ documentation it seems to be a CSS preprocessor.
 
 [% cpm('CSS::LESS') %]
 
+[% cpm('CSS::Prepare') %]
+
 [% cpm('CSS::Sass') %]
 
 Unfortunately this is built on top of a deprecated library which is
 being replaced with Dart Sass.
+
+[% cpm('CSS::Scopifier') %]
 
 =back
 
@@ -230,6 +236,10 @@ being replaced with Dart Sass.
 it depends on L</CSS::SAC> which seems to be unusable.
 
 [% cpm('CSS::Inliner') %]
+
+[% cpm('CSS::Selector::Parser') %]
+
+[% cpm('CSS::Selector::Grammar') %]
 
 [% cpm('Graphics::ColorNames::CSS') %]
 

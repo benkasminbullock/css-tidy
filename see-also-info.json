@@ -43,10 +43,10 @@
 	},
 	{
 		"author":"SKIM",
-		"date":"2020-08-11T13:51:07",
+		"date":"2021-01-28T10:40:38",
 		"fav":0,
 		"module":"CSS::Struct",
-		"version":"0.03"
+		"version":"0.04"
 	},
 	{
 		"author":"CHORNY",
@@ -56,6 +56,13 @@
 		"version":"1.20"
 	},
 	{
+		"author":"LNATION",
+		"date":"2021-04-15T13:07:35",
+		"fav":1,
+		"module":"Crayon",
+		"version":"0.07"
+	},
+	{
 		"author":"MUGIFLY",
 		"date":"2013-09-20T07:30:45",
 		"fav":0,
@@ -63,11 +70,25 @@
 		"version":"v0.0.3"
 	},
 	{
+		"author":"MNF",
+		"date":"2011-06-20T10:45:04",
+		"fav":0,
+		"module":"CSS::Prepare",
+		"version":"v0.9.2.4"
+	},
+	{
 		"author":"OCBNET",
 		"date":"2020-05-04T22:29:04",
 		"fav":9,
 		"module":"CSS::Sass",
 		"version":"v3.6.3"
+	},
+	{
+		"author":"VANSTYN",
+		"date":"2015-08-27T00:07:31",
+		"fav":1,
+		"module":"CSS::Scopifier",
+		"version":"0.04"
 	},
 	{
 		"author":"JANUS",
@@ -85,17 +106,17 @@
 	},
 	{
 		"author":"GTERMARS",
-		"date":"2020-12-31T05:29:22",
+		"date":"2021-02-07T01:27:45",
 		"fav":6,
 		"module":"CSS::Minifier::XS",
-		"version":"0.11"
+		"version":"0.13"
 	},
 	{
 		"author":"LEEJO",
-		"date":"2018-11-06T07:20:54",
+		"date":"2021-03-02T10:49:57",
 		"fav":3,
 		"module":"CSS::Packer",
-		"version":"2.07"
+		"version":"2.08"
 	},
 	{
 		"author":"TSIBLEY",
@@ -117,6 +138,27 @@
 		"fav":5,
 		"module":"CSS::Inliner",
 		"version":"4014"
+	},
+	{
+		"author":"HDP",
+		"date":"2011-11-06T15:29:27",
+		"fav":0,
+		"module":"CSS::Selector::Parser",
+		"version":"0.003"
+	},
+	{
+		"author":"DFH",
+		"date":"2014-07-04T17:33:30",
+		"fav":0,
+		"module":"CSS::Selector::Grammar",
+		"version":"0.002"
+	},
+	{
+		"author":"CFAERBER",
+		"date":"2019-05-01T19:18:11",
+		"fav":2,
+		"module":"Graphics::ColorNames::CSS",
+		"version":"1.14"
 	},
 	{
 		"author":"MANWAR",
