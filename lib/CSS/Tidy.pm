@@ -78,6 +78,7 @@ sub tidy_css
     $text =~ s!(\{|\}|;)(\s*\S)!$1\n$2!g;
     $text =~ s!(\S\s*)(\})!$1\n$2!g;
     $text =~ s!(\S)(\{)!$1 $2!g;
+    $text =~ s!(\S*)(\})!$1\n$2!g;
 
     my @lines = split /\n/, $text;
 
@@ -111,7 +112,7 @@ sub tidy_css
 	    push @tidy, "$indent$after";
 	    next;
 	}
-	if (/\}/) {
+	while (/\}/g) {
 	    $depth--;
 	    if ($depth < 0) {
 		warn "$i: depth = $depth\n";
