@@ -92,6 +92,30 @@ EOF
 my $colonspaceout = tidy_css ($colonspace);
 is ($colonspaceout, $colonspace, "Property/value pair colon space OK");
 
+my $mediaquery = <<'EOF';
+@media (max-width: 596px) {
+	p {
+		color: red;
+	}
+}
+	p {
+		color: green;
+	}
+EOF
+my $mediaqueryout = tidy_css ($mediaquery);
+my $mediaqueryexpect =<<'EOF';
+@media (max-width: 596px) {
+    p {
+        color: red;
+    }
+}
+
+p {
+    color: green;
+}
+EOF
+is ($mediaqueryout, $mediaqueryexpect, "Correct indentation of closing }");
+
 done_testing ();
 
 # Local variables:
