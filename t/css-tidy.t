@@ -116,6 +116,16 @@ p {
 EOF
 is ($mediaqueryout, $mediaqueryexpect, "Correct indentation of closing }");
 
+#TODO: {
+#    local $TODO = "Don't add useless semicolons";
+    my $empty =<<EOF;
+.instructions {
+}
+EOF
+    my $emptyout = tidy_css ($empty);
+    unlike ($emptyout, qr/;/);
+#}
+
 done_testing ();
 
 # Local variables:

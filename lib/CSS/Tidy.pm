@@ -152,7 +152,7 @@ sub tidy_css
     # Add a semicolon after the final CSS instruction if there is not
     # one.
 
-    $out =~ s!([^\};])\s*(\n\s*\})!$1;$2!g;
+    $out =~ s!(.+[^\{\};])\s*(\n\s*\})!$1;$2!g;
 
     if (! $decomment) {
 	$out = restore_comments ($out, $comments);
